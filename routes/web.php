@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::get('/home', 'PagesController@root')->name('root');
 Route::redirect('/','/home');
-Auth::routes();
+Auth::routes(['verify' => true]);
