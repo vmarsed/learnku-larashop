@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'PagesController@root')->name('root');
+Route::get('/home', 'PagesController@root')->name('root');
+Route::redirect('/','/home');
+Auth::routes();
