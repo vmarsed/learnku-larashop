@@ -2,5 +2,5 @@
 @section('title', '首页')
 
 @section('content')
-  <h1>Homeeeeee</h1>
+  <h1>Luyou</h1>
 @stop
