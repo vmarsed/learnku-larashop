@@ -48,7 +48,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
-xdebug_info();
+// xdebug_info();
 
 $response = $kernel->handle(
     $request = Request::capture()
