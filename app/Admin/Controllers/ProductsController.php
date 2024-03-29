@@ -30,7 +30,9 @@ class ProductsController extends AdminController
         $grid->column('title', __('Title'));
         // $grid->column('description', __('Description'));
         $grid->column('image', __('Image'));
-        $grid->column('on_sale', __('On sale'));
+        $grid->column('on_sale', __('On sale'))->display(function($value){
+            return $value ? '是' : '否';
+        });
         $grid->column('rating', __('Rating'));
         $grid->column('sold_count', __('Sold count'));
         $grid->column('review_count', __('Review count'));
