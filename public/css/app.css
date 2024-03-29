@@ -12014,6 +12014,12 @@ body {
 }
 
 /* 5.4 前台商品列表页 */
+.products-index-page {
+  /*分页条*/
+}
+.products-index-page .pagination {
+  margin-right: 5px;
+}
 .products-index-page .products-list {
   padding: 0 15px;
 }
