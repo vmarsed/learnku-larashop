@@ -32,3 +32,10 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 
 
 });
+
+/**
+ * 5.4 前台商品列表
+ */
+
+Route::redirect('/', '/products')->name('root');
+Route::get('products', 'ProductsController@index')->name('products.index');
