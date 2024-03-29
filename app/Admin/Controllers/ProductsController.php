@@ -65,7 +65,7 @@ class ProductsController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
-        $show->field('description', __('Description'));
+        // $show->field('description', __('Description'));
         $show->field('image', __('Image'));
         $show->field('on_sale', __('On sale'));
         $show->field('rating', __('Rating'));
