@@ -61,6 +61,11 @@ body {
 
 /* 5.4 前台商品列表页 */
 .products-index-page {
+  /*分页条*/
+  .pagination {
+    margin-right: 5px;
+  }
+
   .products-list {
     padding: 0 15px;
     .product-item {
@@ -123,3 +128,4 @@ body {
 .productimage {
   max-width: 100%;
 }
+
