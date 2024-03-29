@@ -28,7 +28,7 @@ class ProductsController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
-        $grid->column('description', __('Description'));
+        // $grid->column('description', __('Description'));
         $grid->column('image', __('Image'));
         $grid->column('on_sale', __('On sale'));
         $grid->column('rating', __('Rating'));
@@ -65,7 +65,7 @@ class ProductsController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
-        // $show->field('description', __('Description'));
+        $show->field('description', __('Description'));
         $show->field('image', __('Image'));
         $show->field('on_sale', __('On sale'));
         $show->field('rating', __('Rating'));
