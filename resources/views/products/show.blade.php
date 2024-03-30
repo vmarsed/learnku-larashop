@@ -36,7 +36,14 @@
         </div>
         <div class="cart_amount"><label>数量</label><input type="text" class="form-control form-control-sm" value="1"><span>件</span><span class="stock"></span></div>
         <div class="buttons">
-          <button class="btn btn-success btn-favor">❤ 收藏</button>
+
+          @if($favored)
+            <button class="btn btn-danger btn-disfavor">取消收藏</button>
+          @else
+            <button class="btn btn-success btn-favor">❤ 收藏</button>
+          @endif
+
+          
           <button class="btn btn-primary btn-add-to-cart">加入购物车</button>
         </div>
       </div>
@@ -82,7 +89,12 @@
       // 发起一个 post ajax 请求，请求 url 通过后端的 route() 函数生成。
       axios.post('{{ route('products.favor', ['product' => $product->id]) }}')
         .then(function () { // 请求成功会执行这个回调
-          swal('操作成功', '', 'success');
+          swal('操作成功', '', 'success')
+          // 取消收藏
+          // 在 swal() 的回调里调用了 location.reload() 刷新页面来刷新收藏按钮的状态，当用户点击弹出框的 OK 按钮时这个回调会被触发
+          .then(function(){
+            location.reload()
+          });
         }, function(error) { // 请求失败会执行这个回调
           // 如果返回码是 401 代表没登录
           if (error.response && error.response.status === 401) {
@@ -96,7 +108,18 @@
           }
         });
     });
-
+    /*
+     * 取消收藏
+     */
+     $('.btn-disfavor').click(function () {
+      axios.delete('{{ route('products.disfavor', ['product' => $product->id]) }}')
+        .then(function () {
+          swal('操作成功', '', 'success')
+            .then(function () {
+              location.reload();
+            });
+        });
+    });
 
 
   });
