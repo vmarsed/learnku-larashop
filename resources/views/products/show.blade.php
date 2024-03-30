@@ -28,7 +28,8 @@
                 data-stock="{{ $sku->stock }}"
                 data-toggle="tooltip"
                 title="{{ $sku->description }}"
-                data-placement="bottom">
+                data-placement="bottom"
+                checked>
                 <input type="radio" name="skus" autocomplete="off" value="{{ $sku->id }}"> {{ $sku->title }}
               </label>
             @endforeach
@@ -129,7 +130,7 @@
      */
 
     $('.btn-add-to-cart').click(function () {
-      alert($('label input[name=skus]').val());
+      alert($('label input[name=skus]:checked').val());
       // 请求加入购物车接口
       axios.post('{{ route('cart.add') }}', {
         sku_id: $('label.active input[name=skus]').val(),
