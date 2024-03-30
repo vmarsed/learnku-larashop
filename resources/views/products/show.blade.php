@@ -133,7 +133,7 @@
       // alert($('label input[name=skus]:checked').val());
       // 请求加入购物车接口
       axios.post('{{ route('cart.add') }}', {
-        sku_id: $('label.active input[name=skus]:checked').val(),
+        sku_id: $('label input[name=skus]:checked').val(),
         amount: $('.cart_amount input').val(),
       })
         .then(function () { // 请求成功执行此回调
