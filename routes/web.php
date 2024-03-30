@@ -30,6 +30,10 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');
     Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
     /**
+     * 收藏列表
+     */
+    Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+    /**
      * 收藏按钮
      */
     Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');
