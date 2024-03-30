@@ -35,6 +35,13 @@ class CartController extends Controller
         return [];
     }
 
+    public function index(Request $request)
+    {
+        // with(['productSku.product']) 方法用来预加载购物车里的商品和 SKU 信息
+        $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
+
+        return view('cart.index', ['cartItems' => $cartItems]);
+    }
 
 
 
