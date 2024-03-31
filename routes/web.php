@@ -75,6 +75,3 @@ Route::get('products/{product}', 'ProductsController@show')->name('products.show
  * 测试
  * 
  */
-Route::get('taste',function(){
-    Taste::dispatch();
-});
