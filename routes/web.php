@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Jobs\Taste;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,3 +68,13 @@ Route::get('products', 'ProductsController@index')->name('products.index');
 
 // 商品详情
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
+
+
+/**
+ * 
+ * 测试
+ * 
+ */
+Route::get('taste',function(){
+    Taste::dispatch();
+});
