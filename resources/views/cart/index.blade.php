@@ -186,7 +186,7 @@
             swal({content: $(html)[0], icon: 'error'})
           } else {
             // 其他情况应该是系统挂了
-            swal('系统错误', '', 'error');
+            swal('系统错误'+error.response, '', 'error');
           }
         });
     });
