@@ -150,6 +150,7 @@
         items: [],
         remark: $('#order-form').find('textarea[name=remark]').val(),
       };
+
       // 遍历 <table> 标签内所有带有 data-id 属性的 <tr> 标签，也就是每一个购物车中的商品 SKU
       $('table tr[data-id]').each(function () {
         // 获取当前行的单选框
@@ -171,23 +172,25 @@
         })
       });
       axios.post('{{ route('orders.store') }}', req)
-        .then(function (response) {
-          swal('订单提交成功', '', 'success');
-        }, function (error) {
-          if (error.response.status === 422) {
-            // http 状态码为 422 代表用户输入校验失败
-            var html = '<div>';
-            _.each(error.response.data.errors, function (errors) {
-              _.each(errors, function (error) {
-                html += error+'<br>';
-              })
-            });
-            html += '</div>';
-            swal({content: $(html)[0], icon: 'error'})
-          } else {
-            // 其他情况应该是系统挂了
-            swal('系统错误', '', 'error');
-          }
+        .then(
+          function (response) {
+            swal('订单提交成功', '', 'success');
+          }, 
+          function (error) {
+            if (error.response.status === 422) {
+              // http 状态码为 422 代表用户输入校验失败
+              var html = '<div>';
+              _.each(error.response.data.errors, function (errors) {
+                _.each(errors, function (error) {
+                  html += error+'<br>';
+                })
+              });
+              html += '</div>';
+              swal({content: $(html)[0], icon: 'error'})
+            } else {
+              // 其他情况应该是系统挂了
+              swal('系统错误', '', 'error');
+            }
         });
     });
 
