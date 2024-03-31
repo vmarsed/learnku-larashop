@@ -186,7 +186,16 @@
             swal({content: $(html)[0], icon: 'error'})
           } else {
             // 其他情况应该是系统挂了
-            swal('系统错误'+error.response, '', 'error');
+            var html = '<div>';
+            _.each(error.response.data.errors, function (errors) {
+              _.each(errors, function (error) {
+                html += error+'<br>';
+              })
+            });
+            html += '</div>';
+
+            // swal('系统错误', '', 'error');
+            swal({content: $(html)[0], icon: 'error'})
           }
         });
     });
