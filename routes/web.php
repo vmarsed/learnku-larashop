@@ -50,6 +50,11 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
      * 在购物车移除商品
      */
     Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
+    /**
+     * 下单
+     */
+    Route::post('orders', 'OrdersController@store')->name('orders.store');
+
 
 
 });
