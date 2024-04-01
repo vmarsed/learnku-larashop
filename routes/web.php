@@ -58,7 +58,10 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
      * 用户订单列表
      */
     Route::get('orders', 'OrdersController@index')->name('orders.index');
-
+    /**
+     * U6.7 用户订单详情页
+     */
+    Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
 
 
 });
