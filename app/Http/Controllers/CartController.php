@@ -6,10 +6,23 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AddCartRequest;
 use App\Models\CartItem;
 use App\Models\ProductSku;
+// U6.8 封装代码
+use App\Services\CartService;
+
 
 
 class CartController extends Controller
 {
+
+    # U6.8 封装代码
+    protected $cartService;
+
+    // 利用 Laravel 的自动解析功能注入 CartService 类
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
 
     public function add(AddCartRequest $request)
     {
@@ -39,7 +52,9 @@ class CartController extends Controller
     public function index(Request $request)
     {
         // with(['productSku.product']) 方法用来预加载购物车里的商品和 SKU 信息
-        $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
+        // $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
+        $cartItems = $this->cartService->get();
+
         $addresses = $request->user()->addresses()->orderBy('last_used_at', 'desc')->get();
 
         return view('cart.index', [
@@ -51,7 +66,9 @@ class CartController extends Controller
 
     public function remove(ProductSku $sku, Request $request)
     {
-        $request->user()->cartItems()->where('product_sku_id', $sku->id)->delete();
+        # U6.8 封装代码
+        // $request->user()->cartItems()->where('product_sku_id', $sku->id)->delete();
+        $this->cartService->remove($sku->id);
 
         return [];
     }
