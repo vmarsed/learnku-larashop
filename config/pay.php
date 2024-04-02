@@ -23,9 +23,9 @@ return [
             'app_auth_token' => '',
             // 选填-服务商模式下的服务商 id，当 mode 为 Pay::MODE_SERVICE 时使用该参数
             'service_provider_id' => '',
-            // 选填-默认为正常模式。可选为： MODE_NORMAL 0, MODE_SANDBOX 1, MODE_SERVICE 2
+            // 选填-默认为正常模式。可选为： MODE_NORMAL 0, MODE_SANDBOX 1, MODE_SERVICE 2   int 值 0 1 2
             // 'mode' => 'normal',
-            'mode' => Pay::MODE_NORMAL,
+            'mode' => 0,
         ]
     ],
     // 由于还没做到教程中对接微信的章节，所以先留空了
@@ -76,7 +76,7 @@ return [
             // 选填-默认为正常模式。可选为： MODE_NORMAL, MODE_SERVICE
             // 'mode' => Pay::MODE_NORMAL,
             // 'mode' => 'normal',
-            'mode' => Pay::MODE_NORMAL,
+            'mode' => 0,
         ]
     ],
     // 银联支付
