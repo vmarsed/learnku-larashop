@@ -1,6 +1,7 @@
 <?php
 
 use Yansongda\Pay\Pay;
+
 return [
     'alipay' => [
         'default' => [
@@ -23,6 +24,7 @@ return [
             // 选填-服务商模式下的服务商 id，当 mode 为 Pay::MODE_SERVICE 时使用该参数
             'service_provider_id' => '',
             // 选填-默认为正常模式。可选为： MODE_NORMAL, MODE_SANDBOX, MODE_SERVICE
+            // 'mode' => 'normal',
             'mode' => Pay::MODE_NORMAL,
         ]
     ],
@@ -72,6 +74,8 @@ return [
                 '45F59D4DABF31918AFCEC556D5D2C6E376675D57' => __DIR__.'/Cert/wechatPublicKey.crt',
             ],
             // 选填-默认为正常模式。可选为： MODE_NORMAL, MODE_SERVICE
+            // 'mode' => Pay::MODE_NORMAL,
+            // 'mode' => 'normal',
             'mode' => Pay::MODE_NORMAL,
         ]
     ],
