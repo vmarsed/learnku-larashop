@@ -83,6 +83,7 @@ Route::get('products/{product}', 'ProductsController@show')->name('products.show
  * 
  */
 Route::get('alipay', function() {
+    return app('alipay');
     return app('alipay')->web([
         'out_trade_no' => time(),
         'total_amount' => '1',
