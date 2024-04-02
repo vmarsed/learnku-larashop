@@ -12,7 +12,6 @@ return [
             // 必填-应用公钥证书 路径
             // 设置应用私钥后，即可下载得到以下3个证书
             'app_public_cert_path' => base_path( env('ALIPAY_APP_PUBLIC_CERT_PATH') ),
-            // 'app_public_cert_path' => env('ALIPAY_APP_PUBLIC_CERT_PATH_T'),
             // 必填-支付宝公钥证书 路径
             'alipay_public_cert_path' => base_path( env('ALIPAY_ALIPAY_PUBLIC_CERT_PATH') ),
             // 必填-支付宝根证书 路径
