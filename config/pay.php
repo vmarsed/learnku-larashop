@@ -23,7 +23,7 @@ return [
             'app_auth_token' => '',
             // 选填-服务商模式下的服务商 id，当 mode 为 Pay::MODE_SERVICE 时使用该参数
             'service_provider_id' => '',
-            // 选填-默认为正常模式。可选为： MODE_NORMAL, MODE_SANDBOX, MODE_SERVICE
+            // 选填-默认为正常模式。可选为： MODE_NORMAL 0, MODE_SANDBOX 1, MODE_SERVICE 2
             // 'mode' => 'normal',
             'mode' => Pay::MODE_NORMAL,
         ]
