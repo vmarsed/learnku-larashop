@@ -63,6 +63,10 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
      * U6.7 用户订单详情页
      */
     Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+    /**
+     * U7.3 订单/支付宝支付
+     */
+    Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
 
 
 });
@@ -91,9 +95,9 @@ Route::get('alipay', function() {
     // dd(Pay::MODE_SANDBOX);
     // dump(app('alipay'));
     // return app('alipay');
-    return app('alipay')->web([
-        'out_trade_no' => time(),
-        'total_amount' => '1',
-        'subject' => 'test subject - 测试',
-    ]);
+    // return app('alipay')->web([
+    //     'out_trade_no' => time(),
+    //     'total_amount' => '1',
+    //     'subject' => 'test subject - 测试',
+    // ]);
 });
