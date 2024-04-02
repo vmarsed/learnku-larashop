@@ -85,6 +85,9 @@ Route::get('products/{product}', 'ProductsController@show')->name('products.show
  */
 Route::get('alipay', function() {
     // dd(get_class_vars(Pay::class)); // 返回空数组
+    dd(Pay::MODE_SANDBOX);
+    dd(Pay::MODE_SANDBOX,Pay::MODE_SERVICE);
+    dd(Pay::MODE_SANDBOX,Pay::MODE_SERVICE,Pay::MODE_NORMAL);
     dd(Pay::MODE_SANDBOX,Pay::MODE_SERVICE,Pay::MODE_NORMAL,Pay::MODE_DEV);
     // dd(Pay::MODE_SANDBOX);
     // dump(app('alipay'));
