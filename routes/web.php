@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Jobs\Taste;
+use Yansongda\Pay\Pay;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,6 +84,7 @@ Route::get('products/{product}', 'ProductsController@show')->name('products.show
  * 
  */
 Route::get('alipay', function() {
+    dd(Pay::MODE_SANDBOX);
     // dump(app('alipay'));
     // return app('alipay');
     return app('alipay')->web([
