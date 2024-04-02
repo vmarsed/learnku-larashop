@@ -20132,6 +20132,9 @@ body {
  */
 .orders-show-page {
   font-size: 12px;
+  /*
+   * U7.3 订单详情页, 支付宝支付按钮
+   */
 }
 .orders-show-page .vertical-middle {
   vertical-align: middle;
@@ -20195,4 +20198,8 @@ body {
   display: inline-block;
   width: 150px;
   padding-right: 20px;
+}
+.orders-show-page .payment-buttons {
+  margin-top: 10px;
+  padding-right: 10px;
 }
