@@ -88,7 +88,7 @@ Route::get('alipay', function() {
     dump(Pay::MODE_SANDBOX);
     dump(Pay::MODE_SANDBOX,Pay::MODE_SERVICE);
     dump(Pay::MODE_SANDBOX,Pay::MODE_SERVICE,Pay::MODE_NORMAL);
-    dump(Pay::MODE_SANDBOX,Pay::MODE_SERVICE,Pay::MODE_NORMAL,Pay::MODE_DEV);
+    // dump(Pay::MODE_SANDBOX,Pay::MODE_SERVICE,Pay::MODE_NORMAL,Pay::MODE_DEV);
     // dd(Pay::MODE_SANDBOX);
     // dump(app('alipay'));
     // return app('alipay');
