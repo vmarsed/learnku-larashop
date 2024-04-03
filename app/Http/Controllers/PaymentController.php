@@ -33,14 +33,28 @@ class PaymentController extends Controller
     public function alipayReturn()
     {
         // 校验提交的参数是否合法
-        $data = app('alipay')->verify();
+        // $data = app('alipay')->verify();
+        $data = app('alipay')->callback();
         dd($data);
+        /**
+         * vendor\yansongda\pay\src\Provider\Alipay.php
+         * __call ( verify )
+         * "\Yansongda\Pay\Shortcut\Alipay\VerifyShortcut"
+         * Artful::shortcut($plugin, ...$params)
+         *      $plugin = "\Yansongda\Pay\Shortcut\Alipay\VerifyShortcut"
+
+         *   if (!class_exists($shortcut) || !in_array(ShortcutInterface::class, class_implements($shortcut))) {
+         *       throw new InvalidParamsException(Exception::PARAMS_SHORTCUT_INVALID, "参数异常: [{$shortcut}] 未实现 `ShortcutInterface`");
+         *   }
+
+         * 这个类不存在, 所以第一个判断就是 true 所以就抛出异常了
+         */
     }
 
     // 服务器端回调
     public function alipayNotify()
     {
-        $data = app('alipay')->verify();
+        $data = app('alipay')->callback();
         \Log::debug('Alipay notify', $data->all());
     }
 
