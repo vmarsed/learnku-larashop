@@ -45,13 +45,25 @@ class PaymentController extends Controller
     {
         // 校验输入参数
         $data = app('alipay')->callback();
-        // \Log::debug('Alipay notify', $data->all());
+        \Log::debug('Alipay notify', $data->all());
 
         // 如果订单状态不是成功或者结束，则不走后续的逻辑
         // 所有交易状态：https://docs.open.alipay.com/59/103672
+        // WAIT_BUYER_PAY	交易创建，等待买家付款。
+        // TRADE_CLOSED	    在指定时间段内未支付时关闭的交易； 在交易完成全额退款成功时关闭的交易。
+        // TRADE_SUCCESS	交易成功，且可对该交易做操作，如：多级分润、退款等。
+        // TRADE_FINISHED	交易成功且结束，即不可再做任何操作。
+
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
             return app('alipay')->success();
         }
+        /**
+         * 根据上一句
+         * 下面的代码只有交易状态 == success 或 finished 时才会执行
+         * 成功交易后, 才会把付款时间啥的保存到数据库
+         * 
+         * 
+         */
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
         $order = Order::where('no', $data->out_trade_no)->first();
 
@@ -59,7 +71,7 @@ class PaymentController extends Controller
         if (!$order) {
             return 'fail';
         }
-        
+
         // 如果这笔订单的状态已经是已支付
         if ($order->paid_at) {
             // 返回数据给支付宝
