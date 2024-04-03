@@ -24,8 +24,7 @@ return [
             // 选填-服务商模式下的服务商 id，当 mode 为 Pay::MODE_SERVICE 时使用该参数
             'service_provider_id' => '',
             // 选填-默认为正常模式。可选为： MODE_NORMAL 0, MODE_SANDBOX 1, MODE_SERVICE 2   int 值 0 1 2
-            // 'mode' => 'normal',
-            'mode' => 0,
+            'mode' => Pay::MODE_NORMAL,
         ]
     ],
     // 由于还没做到教程中对接微信的章节，所以先留空了
@@ -74,9 +73,7 @@ return [
                 '45F59D4DABF31918AFCEC556D5D2C6E376675D57' => __DIR__.'/Cert/wechatPublicKey.crt',
             ],
             // 选填-默认为正常模式。可选为： MODE_NORMAL, MODE_SERVICE
-            // 'mode' => Pay::MODE_NORMAL,
-            // 'mode' => 'normal',
-            'mode' => 0,
+            'mode' => Pay::MODE_NORMAL,
         ]
     ],
     // 银联支付
@@ -99,7 +96,7 @@ return [
     'logger' => [
         'enable' => true,
         'file' => storage_path('logs/alipay.log'),
-        'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
+        'level' => 'debug', // 建议生产环境等级调整为 info，开发环境为 debug
         'type' => 'daily', // optional, 可选 daily.
         'max_file' => 30, // optional, 当 type 为 daily 时有效，默认 30 天
     ],

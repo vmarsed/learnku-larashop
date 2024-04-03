@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
         $config = config('pay');
         //判断当前项目运行环境是否为线上环境
         if (app()->environment() !== 'production') {
-            $config['alipay']['default']['mode'] = $config['wechat']['default']['mode'] = 1;
+            $config['alipay']['default']['mode'] = $config['wechat']['default']['mode'] = Pay::MODE_SANDBOX;
             $config['logger']['level'] = 'debug';
         } else {
             $config['logger']['level'] = 'info';
