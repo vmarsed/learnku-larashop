@@ -68,7 +68,7 @@ class PaymentController extends Controller
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
         \Log::debug('状态为 成功 或 结束');
         $order = Order::where('no', $data->out_trade_no)->first();
-        \Log::debug('myrzd',$order);
+        \Log::debug('myrzd',[$order]);
 
         // 正常来说不太可能出现支付了一笔不存在的订单，这个判断只是加强系统健壮性。
         if (!$order) {
@@ -86,6 +86,7 @@ class PaymentController extends Controller
             'payment_method' => 'alipay', // 支付方式
             'payment_no'     => $data->trade_no, // 支付宝订单号
         ]);
+        \Log::debug('更新数据库 paid_at payment_method payment_no Order模型为',[$order]);
 
         return app('alipay')->success();
 
