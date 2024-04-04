@@ -18,5 +18,7 @@ Route::group([
     // 编辑商品
     $router->get('products/{id}/edit', 'ProductsController@edit');
     $router->put('products/{id}', 'ProductsController@update');
+    // U8.1 订单列表
+    $router->get('orders', 'OrdersController@index')->name('orders.index');
 
 });
