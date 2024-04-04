@@ -112,3 +112,7 @@ Route::get('alipay', function() {
     //     'subject' => 'test subject - 测试',
     // ]);
 });
+
+Route::get('test/payed',function(){
+    event( new \App\Events\OrderPaid( \App\Models\Order::find(17)) );
+});
