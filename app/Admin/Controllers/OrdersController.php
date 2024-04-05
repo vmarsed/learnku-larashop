@@ -11,13 +11,14 @@ use Encore\Admin\Show;
 # U8.2 订单详情 show
 use Encore\Admin\Layout\Content;
 # U8.3 在 后台订单详情页 发货
+use Illuminate\Http\Request;
+use App\Exceptions\InvalidRequestException;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use App\Http\Requests\Request;
 
 
 class OrdersController extends AdminController
 {
-    // use ValidatesRequests;
+    use ValidatesRequests;
 
     /**
      * Title for current resource.
