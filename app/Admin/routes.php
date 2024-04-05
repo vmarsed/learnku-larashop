@@ -4,11 +4,11 @@ use Illuminate\Routing\Router;
 
 Admin::routes();
 
-Route::name('admin.')->group([
+Route::group([
     'prefix'        => config('admin.route.prefix'),
     'namespace'     => config('admin.route.namespace'),
     'middleware'    => config('admin.route.middleware'),
-    // 'name'          => 'admin.',
+    'as'          => 'admin.',
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
