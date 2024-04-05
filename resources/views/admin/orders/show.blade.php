@@ -3,7 +3,7 @@
       <h3 class="box-title">订单流水号：{{ $order->no }}</h3>
       <div class="box-tools">
         <div class="btn-group float-right" style="margin-right: 10px">
-          <a href="/admin/orders" class="btn btn-sm btn-default"><i class="fa fa-list"></i> 列表</a>
+          <a href="{{ route('admin.orders.index') }}" class="btn btn-sm btn-default"><i class="fa fa-list"></i> 列表</a>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
         @if($order->ship_status === \App\Models\Order::SHIP_STATUS_PENDING)
         <tr>
             <td colspan="4">
-            <form action="{{ route('orders.ship', [$order->id]) }}" method="post" class="form-inline">
+            <form action="{{ route('admin.orders.ship', [$order->id]) }}" method="post" class="form-inline">
                 <!-- 别忘了 csrf token 字段 -->
                 {{ csrf_field() }}
                 <div class="form-group {{ $errors->has('express_company') ? 'has-error' : '' }}">
