@@ -61,7 +61,7 @@
         @if($order->ship_status === \App\Models\Order::SHIP_STATUS_PENDING)
         <tr>
             <td colspan="4">
-            <form action="{{ route('admin.orders.ship', [$order->id]) }}" method="post" class="form-inline">
+            <form action="{{ route('orders.ship', [$order->id]) }}" method="post" class="form-inline">
                 <!-- 别忘了 csrf token 字段 -->
                 {{ csrf_field() }}
                 <div class="form-group {{ $errors->has('express_company') ? 'has-error' : '' }}">
