@@ -17,7 +17,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class OrdersController extends AdminController
 {
-    use ValidatesRequests;
+    // use ValidatesRequests;
 
     /**
      * Title for current resource.
