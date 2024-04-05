@@ -3,7 +3,7 @@
       <h3 class="box-title">订单流水号：{{ $order->no }}</h3>
       <div class="box-tools">
         <div class="btn-group float-right" style="margin-right: 10px">
-          <a href="{{ route('admin.orders') }}" class="btn btn-sm btn-default"><i class="fa fa-list"></i> 列表</a>
+          <a href="#" class="btn btn-sm btn-default"><i class="fa fa-list"></i> 列表</a>
         </div>
       </div>
     </div>
