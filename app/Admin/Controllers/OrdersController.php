@@ -12,7 +12,7 @@ use Encore\Admin\Show;
 use Encore\Admin\Layout\Content;
 # U8.3 在 后台订单详情页 发货
 use Illuminate\Foundation\Validation\ValidatesRequests;
-
+use Illuminate\Foundation\Http\FormRequest as Request;
 
 
 class OrdersController extends AdminController
