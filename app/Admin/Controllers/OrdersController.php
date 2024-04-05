@@ -10,9 +10,15 @@ use Encore\Admin\Form;
 use Encore\Admin\Show;
 # U8.2 订单详情 show
 use Encore\Admin\Layout\Content;
+# U8.3 在 后台订单详情页 发货
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
+
 
 class OrdersController extends AdminController
 {
+    use ValidatesRequests;
+
     /**
      * Title for current resource.
      *
