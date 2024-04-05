@@ -20,7 +20,9 @@ Route::group([
     $router->put('products/{id}', 'ProductsController@update');
     // U8.1 订单列表
     $router->get('orders', 'OrdersController@index')->name('orders.index');
-    // U8.2 订单详情
+    // U8.2 后台订单详情
     $router->get('orders/{order}', 'OrdersController@show')->name('orders.show');
+    // U8.3 在 后台订单详情页 发货
+    $router->post('orders/{order}/ship', 'OrdersController@ship')->name('orders.ship');
 
 });
