@@ -20,5 +20,7 @@ Route::group([
     $router->put('products/{id}', 'ProductsController@update');
     // U8.1 订单列表
     $router->get('orders', 'OrdersController@index')->name('orders.index');
+    // U8.2 订单详情
+    $router->get('orders/{order}', 'OrdersController@show')->name('orders.show');
 
 });
