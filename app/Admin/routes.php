@@ -25,5 +25,6 @@ Route::group([
     $router->get('orders/{order}', 'OrdersController@show')->name('orders.show');
     // U8.3 在 后台订单详情页 发货
     $router->post('orders/{order}/ship', 'OrdersController@ship')->name('orders.ship');
-
+    // U8.7 拒绝退款
+    $router->post('orders/{order}/refund', 'OrdersController@handleRefund')->name('orders.handle_refund');
 });
