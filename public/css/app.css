@@ -20135,6 +20135,8 @@ body {
   /*
    * U7.3 订单详情页, 支付宝支付按钮
    */
+  /* U8.4 确认收货 */
+  /* U8.6 买家申请退款 */
 }
 .orders-show-page .vertical-middle {
   vertical-align: middle;
@@ -20200,6 +20202,14 @@ body {
   padding-right: 20px;
 }
 .orders-show-page .payment-buttons {
+  margin-top: 10px;
+  padding-right: 10px;
+}
+.orders-show-page .payment-buttons, .orders-show-page .receive-button {
+  margin-top: 10px;
+  padding-right: 10px;
+}
+.orders-show-page .payment-buttons, .orders-show-page .receive-button, .orders-show-page .refund-button {
   margin-top: 10px;
   padding-right: 10px;
 }
