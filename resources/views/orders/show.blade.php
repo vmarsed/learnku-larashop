@@ -64,6 +64,23 @@
 
 
 
+        {{-- U8.6 买家申请退款 Start --}}
+        <!-- 订单已支付，且退款状态不是未退款时展示退款信息 -->
+        @if($order->paid_at && $order->refund_status !== \App\Models\Order::REFUND_STATUS_PENDING)
+        <div class="line">
+          <div class="line-label">退款状态：</div>
+          <div class="line-value">{{ \App\Models\Order::$refundStatusMap[$order->refund_status] }}</div>
+        </div>
+        <div class="line">
+          <div class="line-label">退款理由：</div>
+          <div class="line-value">{{ $order->extra['refund_reason'] }}</div>
+        </div>
+        @endif
+        {{-- U8.6 买家申请退款 End --}}
+
+
+
+
 
       </div>
       <div class="order-summary text-right">
@@ -101,6 +118,19 @@
 
         {{-- U8.4 确认收货 Start --}}
         <!-- 如果订单的发货状态为已发货则展示确认收货按钮 -->
+
+
+        {{-- U8.6 买家申请退款 Start --}}
+        @if($order->paid_at && $order->refund_status === \App\Models\Order::REFUND_STATUS_PENDING)
+        <div class="refund-button">
+          <button class="btn btn-sm btn-danger" id="btn-apply-refund">申请退款</button>
+        </div>
+        @endif
+        {{-- U8.6 买家申请退款 End --}}
+
+        
+
+
         @if($order->ship_status === \App\Models\Order::SHIP_STATUS_DELIVERED)
         <div class="receive-button">
           <form method="post" action="{{ route('orders.received', [$order->id]) }}">
@@ -123,4 +153,39 @@
 </div>
 </div>
 </div>
+@endsection
+
+
+
+@section('scriptsAfterJs')
+<script>
+  $(document).ready(function () {
+
+    /*
+     * U8.6 买家申请退款
+     */
+    // 退款按钮点击事件
+    $('#btn-apply-refund').click(function () {
+      swal({
+        text: '请输入退款理由',
+        content: "input",
+      }).then(function (input) {
+        // 当用户点击 swal 弹出框上的按钮时触发这个函数
+        if(!input) {
+          swal('退款理由不可空', '', 'error');
+          return;
+        }
+        // 请求退款接口
+        axios.post('{{ route('orders.apply_refund', [$order->id]) }}', {reason: input})
+          .then(function () {
+            swal('申请退款成功', '', 'success').then(function () {
+              // 用户点击弹框上按钮时重新加载页面
+              location.reload();
+            });
+          });
+      });
+    });
+
+  });
+</script>
 @endsection

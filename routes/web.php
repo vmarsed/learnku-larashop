@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
     // U8.4 确认收货
     Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
+    // U8.6 买家 申请退款
+    Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
 
 
 
