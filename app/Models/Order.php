@@ -4,21 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 class Order extends Model
 {
     use HasFactory;
 
+    
+    
+    
+    
+    // 退款状态
+    const REFUND_STATUS_PENDING = 'pending';        // 退款状态:“待定”;
+    const REFUND_STATUS_APPLIED = 'applied';        // 退款状态:“已申请”;
+    const REFUND_STATUS_PROCESSING = 'processing';  // 退款状态:“处理”;
+    const REFUND_STATUS_SUCCESS = 'success';        // 退款状态:“成功”;
+    const REFUND_STATUS_FAILED = 'failed';          // 退款状态:“失败”;
 
-    const REFUND_STATUS_PENDING = 'pending';
-    const REFUND_STATUS_APPLIED = 'applied';
-    const REFUND_STATUS_PROCESSING = 'processing';
-    const REFUND_STATUS_SUCCESS = 'success';
-    const REFUND_STATUS_FAILED = 'failed';
-
-    const SHIP_STATUS_PENDING = 'pending';
-    const SHIP_STATUS_DELIVERED = 'delivered';
-    const SHIP_STATUS_RECEIVED = 'received';
+    // 物流状态
+    const SHIP_STATUS_PENDING = 'pending';      // 待定
+    const SHIP_STATUS_DELIVERED = 'delivered';  // 已发货
+    const SHIP_STATUS_RECEIVED = 'received';    // 已收货
 
 
     public static $refundStatusMap = [
@@ -114,7 +120,17 @@ class Order extends Model
         return false;
     }
 
+    public static function getAvailableRefundNo()
+    {
+        do {
+            // Uuid类可以用来生成大概率不重复的字符串
+            $no = Uuid::uuid4()->getHex();
+            // 为了避免重复我们在生成之后在数据库中查询看看是否已经存在相同的退款订单号
+        } while (self::query()->where('refund_no', $no)->exists());
 
+        return $no;
+    }
+    
 
 
 
