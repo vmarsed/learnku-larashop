@@ -8,6 +8,7 @@ use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Exceptions\CouponCodeUnavailableException;
+use App\Models\User;
 
 class CouponCode extends Model
 {
@@ -55,8 +56,6 @@ class CouponCode extends Model
         return $code;
     }
 
-
-
     public function getDescriptionAttribute()
     {
         $str = '';
@@ -75,7 +74,8 @@ class CouponCode extends Model
 
     }
 
-    public function checkAvailable($orderAmount = null)
+    // U9.6 添加了一个 $user 参数
+    public function checkAvailable(User $user, $orderAmount = null)
     {
         if (!$this->enabled) {
             throw new CouponCodeUnavailableException('优惠券不存在');
@@ -96,8 +96,40 @@ class CouponCode extends Model
         if (!is_null($orderAmount) && $orderAmount < $this->min_amount) {
             throw new CouponCodeUnavailableException('订单金额不满足该优惠券最低金额');
         }
-    }
 
+        // U9.6 一张优惠券一个用户只能使用一次
+        /**
+         * 这个依赖项怎么就成当前用户了? 不应该是个 空的 用户对象?
+         * 我知道了, 也就是说, 调用的时候要传入用户对象
+         * select * form orders
+         * where urse_id = $user.id  
+         *      And coupon_code_id=$this.id
+         *      And (
+         *              ( paid_at is null  AND  closed = 0 )
+         *               OR
+         *              (paid_at is not null AND refund_status != success)
+         *          )
+         * 
+         */
+        $used = Order::where('user_id', $user->id)
+            ->where('coupon_code_id', $this->id)
+            ->where(function($query) {
+                $query->where(function($query) {
+                    $query->whereNull('paid_at')
+                        ->where('closed', false);
+                })->orWhere(function($query) {
+                    $query->whereNotNull('paid_at')
+                        ->where('refund_status', '!=', Order::REFUND_STATUS_SUCCESS);
+                });
+            })
+            ->exists();
+        if ($used) {
+            throw new CouponCodeUnavailableException('你已经使用过这张优惠券了');
+        }
+
+
+
+    }
 
     public function getAdjustedPrice($orderAmount)
     {
@@ -109,10 +141,6 @@ class CouponCode extends Model
 
         return number_format($orderAmount * (100 - $this->value) / 100, 2, '.', '');
     }
-
-
-
-
 
     public function changeUsed($increase = true)
     {
