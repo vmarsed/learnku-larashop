@@ -29,4 +29,7 @@ Route::group([
     $router->post('orders/{order}/refund', 'OrdersController@handleRefund')->name('orders.handle_refund');
     // U9.1 后台 -- 优惠券列表
     $router->get('coupon_codes', 'CouponCodesController@index');
+    // U9.2 后台 - 添加优惠券
+    $router->post('coupon_codes', 'CouponCodesController@store');
+    $router->get('coupon_codes/create', 'CouponCodesController@create');    
 });
