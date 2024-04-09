@@ -9,6 +9,8 @@ use App\Models\ProductSku;
 use App\Exceptions\InvalidRequestException;
 use App\Jobs\CloseOrder;
 use Carbon\Carbon;
+use App\Models\CouponCode;
+use App\Exceptions\CouponCodeUnavailableException;
 
 class OrderService
 {
@@ -60,7 +62,7 @@ class OrderService
 
 
 
-            
+
             if ($coupon) {
                 // 总金额已经计算出来了，检查是否符合优惠券规则
                 $coupon->checkAvailable($totalAmount);
