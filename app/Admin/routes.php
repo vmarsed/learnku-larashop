@@ -31,5 +31,9 @@ Route::group([
     $router->get('coupon_codes', 'CouponCodesController@index');
     // U9.2 后台 - 添加优惠券
     $router->post('coupon_codes', 'CouponCodesController@store');
-    $router->get('coupon_codes/create', 'CouponCodesController@create');    
+    $router->get('coupon_codes/create', 'CouponCodesController@create');
+    // U9.3. 管理后台 - 修改和删除优惠券
+    $router->get('coupon_codes/{id}/edit', 'CouponCodesController@edit');
+    $router->put('coupon_codes/{id}', 'CouponCodesController@update');    
+    $router->delete('coupon_codes/{id}', 'CouponCodesController@destroy');    
 });
