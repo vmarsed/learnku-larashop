@@ -31,7 +31,8 @@ class UserAddressFactory extends Factory
             'city'          => $address[1],
             'district'      => $address[2],
             'address'       => sprintf('第%d街道第%d号', $this->faker->randomNumber(2), $this->faker->randomNumber(3)),
-            'zip'           => $this->faker->postcode,
+            // 'zip'           => $this->faker->postcode,
+            'zip'           => $this->faker->randomNumber(6,true),
             'contact_name'  => $this->faker->name,
             'contact_phone' => $this->faker->phoneNumber,
         ];

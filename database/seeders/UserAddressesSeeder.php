@@ -17,6 +17,9 @@ class UserAddressesSeeder extends Seeder
     {
         User::all()->each(function (User $user) {
             UserAddress::factory()->count(random_int(1, 3))->create(['user_id' => $user->id]);
+            // $mya = UserAddress::factory();
+            // $myb = $mya->count(random_int(1, 3));
+            // $myc = $myb->create(['user_id' => $user->id]);
         });
 
     }
