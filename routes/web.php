@@ -128,5 +128,12 @@ Route::get('test/we',function(){
     return view('test.we');
 })->name('test.we');
 Route::post('test/we',function(){
-
+    $request = \request();
+    Account::create([
+        'platform'=> $request->platform,
+        'user_id' => $request->user_id,
+        'auth' => [
+            $request->auth_key => $request->auth_value,
+        ]
+    ]);
 })->name('test.we');
