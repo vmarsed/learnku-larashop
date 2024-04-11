@@ -125,5 +125,8 @@ Route::get('test/payed',function(){
 });
 
 Route::get('test/we',function(){
-    echo '<h1>Hello</h1>';
+    return view('test.we');
+});
+Route::post('test/we',function(){
+    
 });
