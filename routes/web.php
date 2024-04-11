@@ -132,7 +132,7 @@ Route::get('test/we',function(){
 
 Route::post('test/we',function(){
     $request = \request();
-    $account = Account::where('user_id',$request->user_id)->where('platform',$request->platform);
+    $account = Account::where('user_id',$request->user_id)->where('platform',$request->platform)->first();
     if($account){
         $auth = $account->auth->merge([$request->auth_key => $request->auth_value]);
         $account->update($auth);
