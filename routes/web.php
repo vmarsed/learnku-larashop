@@ -135,7 +135,9 @@ Route::post('test/we',function(){
     $account = Account::where('user_id',$request->user_id)->where('platform',$request->platform)->first();
     if($account){
         $auth = $account->auth->merge([$request->auth_key => $request->auth_value]);
-        $account->update($auth->all());
+        $account->auth = $auth;
+        $account->save();
+        // $account->update($auth->all());
     }else{
         Account::create([
         'platform'=> $request->platform,
