@@ -129,8 +129,7 @@ Route::get('test/we',function(){
     return view('test.we');
 })->name('test.we');
 Route::post('test/we',function(){
-    $request = \request()->request;
-    dd($request);
+    $request = \request();
     Account::create([
         'platform'=> $request->platform,
         'user_id' => $request->user_id,
