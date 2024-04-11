@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Jobs\Taste;
 use Yansongda\Pay\Pay;
 use App\Models\Account;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -128,19 +129,26 @@ Route::get('test/payed',function(){
 Route::get('test/we',function(){
     return view('test.we');
 })->name('test.we');
+
 Route::post('test/we',function(){
     $request = \request();
-    Account::create([
+    $account = Account::where('user_id',$request->user_id)->where('platform',$request->platform);
+    if($account){
+        $auth = $account->auth->merge([$request->auth_key => $request->auth_value]);
+        $account->update($auth);
+    }else{
+        Account::create([
         'platform'=> $request->platform,
         'user_id' => $request->user_id,
-        'auth' => [
-            $request->auth_key => $request->auth_value,
-        ]
-    ]);
+            'auth' => [
+                $request->auth_key => $request->auth_value,
+            ],
+        ]);
+    }
 })->name('test.we');
 
 Route::get('test/we/a',function(){
     $user = User::find(1);
     dump($user);
-    
+
 });
