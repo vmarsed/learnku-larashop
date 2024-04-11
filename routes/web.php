@@ -126,7 +126,7 @@ Route::get('test/payed',function(){
 
 Route::get('test/we',function(){
     return view('test.we');
-});
+})->name('test.we');
 Route::post('test/we',function(){
-    
-});
+
+})->name('test.we');
