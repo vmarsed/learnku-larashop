@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Jobs\Taste;
 use Yansongda\Pay\Pay;
+use App\Models\Account;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
