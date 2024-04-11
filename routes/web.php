@@ -123,3 +123,7 @@ Route::get('alipay', function() {
 Route::get('test/payed',function(){
     event( new \App\Events\OrderPaid( \App\Models\Order::find(17)) );
 });
+
+Route::get('test/we',function(){
+    echo '<h1>Hello</h1>';
+});
