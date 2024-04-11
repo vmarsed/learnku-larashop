@@ -130,6 +130,14 @@ Route::get('test/we',function(){
 })->name('test.we');
 Route::post('test/we',function(){
     $request = \request();
+    $data = [
+        'platform'=> $request->platform,
+        'user_id' => $request->user_id,
+        'auth' => [
+            $request->auth_key => $request->auth_value,
+        ]
+    ];
+    dump($data);
     Account::create([
         'platform'=> $request->platform,
         'user_id' => $request->user_id,
