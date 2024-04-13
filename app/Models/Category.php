@@ -39,14 +39,24 @@ class Category extends Model
 
     public function children()
     {
+        // that.parent_id = this.id
         return $this->hasMany(Category::class, 'parent_id');
     }
 
     public function parent()
     {
+        // 正 this.parent_id = that.id  // 正即 this 是当前行
+        // 反 this.id = that.parent_id // 反即 this 是其他行  that 是"当前行" 在 belongsTo 语义中, 使用 反向
+        // 所以这里就是 (class , parent_id , id) 不知道为什么这里可以省略
         return $this->belongsTo(Category::class);
+        // 为什么不都用正向语义 , 比如 User hasMany Phone , Phone hasOne User 进行定义
     }
 
+    public function p()
+    {
+        // this.parent_id = that.id
+        return $this->hasMany(Category::class,'id','parent_id');
+    }
     public function products()
     {
         return $this->hasMany(Product::class);
