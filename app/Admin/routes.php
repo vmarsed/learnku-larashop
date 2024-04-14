@@ -35,5 +35,14 @@ Route::group([
     // U9.3. 管理后台 - 修改和删除优惠券
     $router->get('coupon_codes/{id}/edit', 'CouponCodesController@edit');
     $router->put('coupon_codes/{id}', 'CouponCodesController@update');    
-    $router->delete('coupon_codes/{id}', 'CouponCodesController@destroy');    
+    $router->delete('coupon_codes/{id}', 'CouponCodesController@destroy');
+    // 6U3.3 后台 - 管理 category    
+    $router->get('categories', 'CategoriesController@index');
+    $router->get('categories/create', 'CategoriesController@create');
+    $router->get('categories/{id}/edit', 'CategoriesController@edit');
+    $router->post('categories', 'CategoriesController@store');
+    $router->put('categories/{id}', 'CategoriesController@update');
+    $router->delete('categories/{id}', 'CategoriesController@destroy');
+    $router->get('api/categories', 'CategoriesController@apiIndex');
+
 });
