@@ -8,23 +8,12 @@
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            所有类目
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
-            @if(isset($categoryTree))
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" id="categoryTree">所有类目 <b class="caret"></b></a>
-              <div class="dropdown-menu" aria-labelledby="categoryTree">
-                <!-- 遍历 $categoryTree 集合，将集合中的每一项以 $category 变量注入 layouts._category_item 模板中并渲染 -->
-                {{-- @each('layouts._category_item', $categoryTree, 'category') --}}
-                <a href="#" class="dropdown-item">xxxx</a>
-              </div>
-            </li>
-          @endif
-  
           </ul>
         </li>
       </ul>
