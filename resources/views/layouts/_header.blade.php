@@ -14,6 +14,7 @@
             {{-- <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+            @each('layouts._category_item', $categoryTree, 'category')
           </ul>
         </li>
       </ul>
