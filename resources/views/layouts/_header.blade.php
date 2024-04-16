@@ -16,7 +16,8 @@
       <!-- Left Side Of Navbar -->
 
       {{-- 折叠菜单开始 --}}
-      <ul class="navbar-nav mr-auto">
+      {{-- mr-auto --}}
+      <ul class="navbar-nav navbar-right">
         <!-- 顶部类目菜单开始 -->
         <!-- 判断模板是否有 $categoryTree 变量 -->
         @if(isset($categoryTree))
