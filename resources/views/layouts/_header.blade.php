@@ -29,7 +29,7 @@
 
       @if(isset($categoryTree))
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" >所有类目 <b class="caret"></b></a>
+          <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" >所有类目 <b class="caret"></b></a>
           <ul class="dropdown-menu" >
             @each('layouts._category_item', $categoryTree, 'category')
           </ul>
