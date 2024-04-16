@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Exceptions\InvalidRequestException;
+use App\Services\CategoryService;
+
 
 
 
 class ProductsController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, CategoryService $categoryService)
     {
         // $products = Product::query()->where('on_sale',True)->paginate(16);
         // return view('products.index',['products' => $products]);
@@ -72,6 +74,7 @@ class ProductsController extends Controller
                 'order'  => $order,
             ],
             'category' => $category ?? null, // 等价于 isset($category) ? $category : null
+            'categoryTree' => $categoryService->getCategoryTree(),
 
         ]);
 
