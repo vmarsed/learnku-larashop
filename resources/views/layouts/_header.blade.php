@@ -28,7 +28,7 @@
           </ul>
         </li> --}}
 
-                @if (isset($categoryTree))
+                @if (!isset($categoryTree))
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" id="categoryTree">所有类目 <b class="caret"></b></a>
