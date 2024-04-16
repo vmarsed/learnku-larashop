@@ -20,7 +20,7 @@ class AdminTablesSeeder extends Seeder
             [
                 [
                     "icon" => "fa-bar-chart",
-                    "order" => 4,
+                    "order" => 1,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "Dashboard",
@@ -28,7 +28,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-tasks",
-                    "order" => 5,
+                    "order" => 7,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "Admin",
@@ -36,7 +36,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-users",
-                    "order" => 6,
+                    "order" => 8,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Users",
@@ -44,7 +44,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-user",
-                    "order" => 7,
+                    "order" => 9,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Roles",
@@ -52,7 +52,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-ban",
-                    "order" => 8,
+                    "order" => 10,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Permission",
@@ -60,7 +60,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-bars",
-                    "order" => 9,
+                    "order" => 11,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Menu",
@@ -68,7 +68,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-history",
-                    "order" => 10,
+                    "order" => 12,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Operation log",
@@ -76,7 +76,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-users",
-                    "order" => 1,
+                    "order" => 4,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "用户管理",
@@ -84,7 +84,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-shopping-bag",
-                    "order" => 2,
+                    "order" => 5,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "商品管理",
@@ -92,7 +92,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-cny",
-                    "order" => 3,
+                    "order" => 6,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "订单管理",
@@ -100,11 +100,19 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-diamond",
-                    "order" => 0,
+                    "order" => 2,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "优惠券管理",
                     "uri" => "/coupon_codes"
+                ],
+                [
+                    "icon" => "fa-bars",
+                    "order" => 3,
+                    "parent_id" => 0,
+                    "permission" => NULL,
+                    "title" => "类目管理",
+                    "uri" => "/categories"
                 ]
             ]
         );

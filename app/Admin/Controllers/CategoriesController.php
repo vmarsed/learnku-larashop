@@ -25,7 +25,6 @@ class CategoriesController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Category);
-
         $grid->id('ID')->sortable();
         $grid->name('名称');
         $grid->level('层级');
