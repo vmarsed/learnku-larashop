@@ -1,114 +1,80 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </button>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            @each('layouts._category_item', $categoryTree, 'category')
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
-  <div class="container">
+    <div class="container">
 
-    <!-- Branding Image -->
-    <a class="navbar-brand " href="{{ url('/') }}">
-      Laravel Shop
-    </a>
-
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <!-- Branding Image -->
+        <a class="navbar-brand" href="{{ url('/') }}">
+            Laravel Shop
+        </a>
 
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    
-      <!-- Left Side Of Navbar -->
 
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+
+
+            <!-- Left Side Of Navbar -->
+
+            <ul class="navbar-nav mr-auto">
+                {{-- <li class="nav-item dropdown">
           <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             全部分类
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
             @each('layouts._category_item', $categoryTree, 'category')
           </ul>
-        </li>
-      </ul>
+        </li> --}}
+
+                @if (isset($categoryTree))
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" id="categoryTree">所有类目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu" aria-labelledby="categoryTree">
+                            <!-- 遍历 $categoryTree 集合，将集合中的每一项以 $category 变量注入 layouts._category_item 模板中并渲染 -->
+                            @each('layouts._category_item', $categoryTree, 'category')
+                        </ul>
+                    </li>
+                @endif
+
+            </ul>
 
 
 
 
-      <ul class="navbar-nav navbar-right">
-        <!-- 登录注册链接开始 -->
-        @guest
-        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
-        @else
-        <li class="nav-item">
-          <a class="nav-link mt-1" href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
-        </li>
-      
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="https://cdn.learnku.com/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" class="img-responsive img-circle" width="30px" height="30px">
-            {{ Auth::user()->name }}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="{{ route('user_addresses.index') }}" class="dropdown-item">收货地址</a>
-            <a href="{{ route('products.favorites') }}" class="dropdown-item">我的收藏</a>
-            <a href="{{ route('orders.index') }}" class="dropdown-item">我的订单</a>
-            <a class="dropdown-item" id="logout" href="#"
-               onclick="event.preventDefault();document.getElementById('logout-form').submit();">退出登录</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-            </form>
-          </div>
-        </li>
-        @endguest
-        <!-- 登录注册链接结束 -->
-      </ul>
+            <ul class="navbar-nav navbar-right">
+                <!-- 登录注册链接开始 -->
+                @guest
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link mt-1" href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://cdn.learnku.com/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60"
+                                class="img-responsive img-circle" width="30px" height="30px">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a href="{{ route('user_addresses.index') }}" class="dropdown-item">收货地址</a>
+                            <a href="{{ route('products.favorites') }}" class="dropdown-item">我的收藏</a>
+                            <a href="{{ route('orders.index') }}" class="dropdown-item">我的订单</a>
+                            <a class="dropdown-item" id="logout" href="#"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">退出登录</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+                <!-- 登录注册链接结束 -->
+            </ul>
 
 
 
@@ -118,6 +84,6 @@
 
 
 
+        </div>
     </div>
-  </div>
 </nav>
