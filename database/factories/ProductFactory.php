@@ -118,6 +118,8 @@ class ProductFactory extends Factory
             "https://images.unsplash.com/photo-1598860024867-a1cb3a858427?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJydXNofGVufDB8fDB8fHww",
 
         ]);
+        // 从数据库中随机取一个类目
+        $category = \App\Models\Category::query()->where('is_directory', false)->inRandomOrder()->first();
 
         return [
             'title'        => $this->faker->word,
@@ -128,6 +130,10 @@ class ProductFactory extends Factory
             'sold_count'   => 0,
             'review_count' => 0,
             'price'        => 0,
+            // 将取出的类目 ID 赋给 category_id 字段
+            // 如果数据库中没有类目则 $category 为 null，同样 category_id 也设成 null
+            'category_id'  => $category ? $category->id : null,
+
         ];
         
 
