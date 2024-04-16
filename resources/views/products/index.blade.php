@@ -60,6 +60,23 @@
 
 
 
+    <!-- 展示子类目开始 -->
+    <div class="filters">
+      <!-- 如果当前是通过类目筛选，并且此类目是一个父类目 -->
+      @if ($category && $category->is_directory)
+        <div class="row">
+          <div class="col-3 filter-key">子类目：</div>
+          <div class="col-9 filter-values">
+          <!-- 遍历直接子类目 -->
+          @foreach($category->children as $child)
+            <a href="{{ route('products.index', ['category_id' => $child->id]) }}">{{ $child->name }}</a>
+          @endforeach
+          </div>
+        </div>
+      @endif
+    </div>
+    <!-- 展示子类目结束 -->
+    <div class="row products-list">
 
 
     
