@@ -68,9 +68,9 @@
 
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <button class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             全部分类
-          </button>
+          </a>
           <ul class="dropdown-menu dropdown-menu-dark">
             @each('layouts._category_item', $categoryTree, 'category')
           </ul>
