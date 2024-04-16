@@ -17,27 +17,18 @@
     
       <!-- Left Side Of Navbar -->
 
+      {{-- 所有类目开始 --}}
       <ul class="navbar-nav mr-auto">
-        {{-- <li class="nav-item dropdown">
-          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            全部分类
-          </button>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            @each('layouts._category_item', $categoryTree, 'category')
-          </ul>
-        </li> --}}
-
-      @if(isset($categoryTree))
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" >所有类目 <b class="caret"></b></a>
-          <ul class="dropdown-menu" >
-            @each('layouts._category_item', $categoryTree, 'category')
-          </ul>
-        </li>
-      @endif
-
+        @if(isset($categoryTree))
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" >所有类目 <b class="caret"></b></a>
+            <ul class="dropdown-menu" >
+              @each('layouts._category_item', $categoryTree, 'category')
+            </ul>
+          </li>
+        @endif
       </ul>
-
+      {{-- 所有类目结束 --}}
 
 
 
