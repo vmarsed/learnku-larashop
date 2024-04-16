@@ -25,7 +25,7 @@
             <div class="dropdown-menu" aria-labelledby="categoryTree">
               <!-- 遍历 $categoryTree 集合，将集合中的每一项以 $category 变量注入 layouts._category_item 模板中并渲染 -->
               {{-- @each('layouts._category_item', $categoryTree, 'category') --}}
-              <a href="#">xxxx</a>
+              <a href="#" class="dropdown-item">xxxx</a>
             </div>
           </li>
         @endif
