@@ -1,46 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
-
-
-
-
-
-
-
-
-
-    {{-- $1 --}}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
-
-        
-        @if(isset($categoryTree))
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" id="categoryTree">所有类目 <b class="caret"></b></a>
-            <div class="dropdown-menu" aria-labelledby="categoryTree">
-              <!-- 遍历 $categoryTree 集合，将集合中的每一项以 $category 变量注入 layouts._category_item 模板中并渲染 -->
-              @each('layouts._category_item', $categoryTree, 'category')
-            </div>
-          </li>
-        @endif
-
-
-
-
-
-
-
-
-
-
-
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            {{-- <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-
-
 
 
 
