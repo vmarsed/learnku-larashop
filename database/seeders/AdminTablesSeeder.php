@@ -28,7 +28,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-tasks",
-                    "order" => 7,
+                    "order" => 9,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "Admin",
@@ -36,7 +36,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-users",
-                    "order" => 8,
+                    "order" => 10,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Users",
@@ -44,7 +44,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-user",
-                    "order" => 9,
+                    "order" => 11,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Roles",
@@ -52,7 +52,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-ban",
-                    "order" => 10,
+                    "order" => 12,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Permission",
@@ -60,7 +60,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-bars",
-                    "order" => 11,
+                    "order" => 13,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Menu",
@@ -68,7 +68,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-history",
-                    "order" => 12,
+                    "order" => 14,
                     "parent_id" => 2,
                     "permission" => NULL,
                     "title" => "Operation log",
@@ -92,7 +92,7 @@ class AdminTablesSeeder extends Seeder
                 ],
                 [
                     "icon" => "fa-cny",
-                    "order" => 6,
+                    "order" => 8,
                     "parent_id" => 0,
                     "permission" => NULL,
                     "title" => "订单管理",
@@ -113,6 +113,22 @@ class AdminTablesSeeder extends Seeder
                     "permission" => NULL,
                     "title" => "类目管理",
                     "uri" => "/categories"
+                ],
+                [
+                    "icon" => "fa-bars",
+                    "order" => 6,
+                    "parent_id" => 9,
+                    "permission" => NULL,
+                    "title" => "众筹商品管理",
+                    "uri" => "/crowdfunding_products"
+                ],
+                [
+                    "icon" => "fa-bars",
+                    "order" => 7,
+                    "parent_id" => 9,
+                    "permission" => NULL,
+                    "title" => "普通商品管理",
+                    "uri" => "/products"
                 ]
             ]
         );
